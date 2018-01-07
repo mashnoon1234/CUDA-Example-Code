@@ -11,9 +11,9 @@ void VectorAdditionCPU(int* a, int* b, int* c, int size)
 
 void __global__ VectorAdditionGPU(int* a, int* b, int* c, int size)
 {
-    int index = threadIdx.x + blockIdx.x * blockDim.x;
+  int index = threadIdx.x + blockIdx.x * blockDim.x;
 	if(index < size)
-	{    
+	{
 	    c[index] = a[index] + b[index];
 	    __syncthreads();
 	}
@@ -21,7 +21,7 @@ void __global__ VectorAdditionGPU(int* a, int* b, int* c, int size)
 
 void __global__ VectorAdditionGPUSharedMemory(int* a, int* b, int* c, int size, int sharedMemorySize)
 {
-
+  // Yet to be done
 }
 
 int main()
@@ -74,7 +74,7 @@ int main()
   		error = true;
 
   if(error)
-  	cout << "Results don't match!" << endl;	
+  	cout << "Results don't match!" << endl;
 
   delete [] a;
   delete [] b;
